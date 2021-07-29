@@ -34,7 +34,7 @@ export default class ExercisesList extends Component {
 
   componentDidMount() {
     axios
-      .get(process.env.URL + "exercises/")
+      .get("http://localhost:5000/exercises/")
       .then((res) => {
         this.setState({ exercises: res.data });
       })
