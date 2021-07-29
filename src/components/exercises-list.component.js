@@ -33,8 +33,10 @@ export default class ExercisesList extends Component {
   }
 
   componentDidMount() {
+    console.log(process.env);
+
     axios
-      .get("http://localhost:5000/exercises/")
+      .get(process.env.REACT_APP_BACKEND_URL + "exercises/")
       .then((res) => {
         this.setState({ exercises: res.data });
       })
@@ -43,7 +45,7 @@ export default class ExercisesList extends Component {
 
   deleteExercise(id) {
     axios
-      .delete("http://localhost:5000/exercises/" + id)
+      .delete(process.env.REACT_APP_BACKEND_URL + "exercises/" + id)
       .then((res) => console.log(res.data));
     this.setState({
       exercises: this.state.exercises.filter((el) => el._id !== id),
